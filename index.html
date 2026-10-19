@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const log = console.log.bind(console);
+
+      function car(id, name, year, price, color) {
+        log(`ID: ${id}`);
+        log(`Модель: ${name}`);
+        log(`Год: ${year}`);
+        log(`Цена: ${price}`);
+        log(`Цвет: ${color}`);
+      }
+
+      async function getCarConfig(countUser) {
+        const res = await fetch(
+          "https://www.lada.ru/api-v1/os-cars/938134/city-id",
+        );
+        const carConfig = await res.json();
+        let count = 0;
+        for (let i = 0; i < countUser; i++) {
+          count++;
+          car(
+            carConfig[i].car_id,
+            carConfig[i].family_name,
+            carConfig[i].year,
+            carConfig[i].price,
+            carConfig[i].color.title,
+          );
+          log("----------------------------------------");
+        }
+        log(count);
+      }
+
+      function car(id, name, year, price, color) {
+        log(`ID: ${id}`);
+        log(`Модель: ${name}`);
+        log(`Год: ${year}`);
+        log(`Цена: ${price}`);
+        log(`Цвет: ${color}`);
+      }
+
+      // let users = ["Араб", "Саид", "Азиз", "Адам"];
+      // log("---- Вывод массива ----");
+      // for (let i = 0; i < users.length; i++) {
+      //   log(users[i]);
+      // }
+      // log("---- Вывод массива обратным счётом ----");
+      // for (let i = users.length - 1; i >= 0; i--) {
+      //   log(users[i]);
+      // }
+
+      // let cars = ["Mercedes", "BMW", "Audi", "Opel", "Bugatto"];
+      // for (let i = cars.length - 1; i >= 0; i--) {
+      //   log(cars[i]);
+      // }
+
+      let students = [
+        {
+          firstname: "Гарданов",
+          name: "Араб",
+          group: "2Р2",
+        },
+        {
+          firstname: "Мержоев",
+          name: "Саид",
+          group: "2Р2",
+        },
+        {
+          firstname: "Аушев",
+          name: "Абдул-Азиз",
+          group: "2Р2",
+        },
+        {
+          firstname: "Марзиев",
+          name: "Исмаил",
+          group: "2Р2",
+        },
+        {
+          firstname: "Марзиев",
+          name: "Ислам",
+          group: "2Р2",
+        },
+      ];
+      // for (let i = 0; i < students.length; i++) {
+      //   log(students[i].name);
+      // }
+
+      // цикл for ... of для массива
+      // let cars = ["BMW", "MERCEDES", "AUDI", "OPEL"]
+      // for(const element of cars){
+      //   log(`Доступный Транспорт: ${element}`)
+      // }
+
+      // for(const element of students){
+      //   log(`Фамилия: ${element.firstname}`)
+      //   log(`Имя: ${element.name}`)
+      //   log("------")
+      // }
+
+      // цикл for ... in для объекта
+      let students1 = {
+        firstname: "Гарданов",
+        name: "Араб",
+        group: "2Р2",
+      };
+
+      // for (const key in students1) {
+      //   log(students1[key]);
+      // }
+
+      // // Object.keys достает все ключи обьекта
+      // log(Object.keys(students1)); // ['firstname', 'name', 'group']
+
+      // // Object.values достает все значения обьекта
+      // log(Object.values(students1)); // ['Гарданов', 'Араб', '2Р2']
+
+      // // Object.values перебирает ключи и значения
+      // log(Object.entries(students1)); // ['Гарданов', 'Араб', '2Р2']
+
+      let cars = [
+        {
+          brand: "BMW",
+          model: "M5",
+          year: "2025",
+          color: "BLACK",
+        },
+        {
+          brand: "MERCEDES",
+          model: "C-Class",
+          year: "2025",
+          color: "BLACK",
+        },
+        {
+          brand: "Audi",
+          model: "RS-7",
+          year: "2025",
+          color: "BLACK",
+        },
+        {
+          brand: "Opel",
+          model: "fignya",
+          year: "2025",
+          color: "BLACK",
+        },
+        {
+          brand: "Chevrolet",
+          model: "Camaro",
+          year: "2025",
+          color: "BLACK",
+        },
+      ];
+
+      
+      for (let i = 0; i < cars.length; i++) {
+        log(cars[i]);
+        log(Object.keys(cars[i]));
+        log(Object.values(cars[i]));
+        log("-----");
+      }
+    </script>
+  </body>
+</html>
